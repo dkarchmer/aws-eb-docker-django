@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# Load CSS and JavaScript #}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts }
+{% bootstrap_messages %}
+
+
+
+{% block content %}
+
+    <h2>User <small>@{{ user.username }}</small></h2>
+
+<div class="row-fluid">
+  <div class="span4">
+
+
+      <p><b>A valid email address is required</b></p>
+
+<form action="" method="post" class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% form %}
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
+</form>
+
+    <hr/>
+
+  </div>
+</div>
+
+{% endblock %}

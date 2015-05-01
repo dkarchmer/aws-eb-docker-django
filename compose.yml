@@ -1,0 +1,21 @@
+db:
+  image: postgres:9.3
+web:
+  build: .
+  volumes:
+    - .:/var/app
+  command: python manage.py runserver 0.0.0.0:8080
+  ports:
+    - "8000:8080"
+  links:
+    - db:db
+  environment:
+    - DJANGO_SETTINGS_MODULE=settings.dev-docker
+    - USE_CELERY=0
+    - EB_USE_WORKER=0
+    - BROKER_TYPE=SQS
+    - RDS_DB_NAME=postgres
+    - RDS_USERNAME=postgres
+    - RDS_PASSWORD=''
+    - RDS_HOSTNAME=$DB_PORT_5432_TCP_ADDR
+    - RDS_PORT=$DB_PORT_5432_TCP_PORT

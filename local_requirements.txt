@@ -1,0 +1,4 @@
+awscli==1.7.22
+awsebcli==3.2.2
+Fabric==1.10.1
+docker-compose==1.2.0rc4

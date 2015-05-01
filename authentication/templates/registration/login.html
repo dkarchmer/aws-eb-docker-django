@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts }
+{% bootstrap_messages %}
+
+
+
+{% block content %}
+
+<div class="row-fluid">
+  <div class="span4">
+
+  <div class="alert alert-danger" role="alert">
+    <h4>Login is currently restricted. Stay tuned for public access</h4>
+  </div>
+    <hr/>
+
+
+
+
+<form action="" method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">
+            {% bootstrap_icon "star" %} Submit
+        </button>
+      <div class="list-inline pull-right">
+          <span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=cS7neBiXPM1zK7ktAtSPrdBLJBSVRy51MuDCWEJZSbj9ijd9FwleHfaY1jIV"></script></span>
+      </div>
+    {% endbuttons %}
+</form>
+
+
+      <hr/>
+
+  </div>
+</div>
+
+{% endblock %}
+
