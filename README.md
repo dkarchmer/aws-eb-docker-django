@@ -51,3 +51,6 @@ Assuming credentials stored on ~/.aws/credentials (http://boto.readthedocs.org/e
 * fab eb_create
    * Enter db name and password
    * It can take as much as ten minutes to finish
+* fab create_admin
+   * which will create a super user account for the admin if NO accounts exist
+   * This can only be called once and the password should be changed within the site right away

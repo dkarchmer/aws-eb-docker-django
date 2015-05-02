@@ -23,11 +23,3 @@ log
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 
-# Synmbolic links
-activitylog/
-ampervue/
-authentication/
-myproject/
-s3picture/
-settings/
-worker/
