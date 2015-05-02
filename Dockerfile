@@ -38,7 +38,6 @@ ENV DJANGO_SETTINGS_MODULE=settings.production
 # Useless as there is no port really exposed but seems like EB needs it
 EXPOSE 8080
 
-VOLUME ["/var/log/vps"]
 VOLUME ["/var/app"]
 
 WORKDIR  /var/app
