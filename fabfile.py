@@ -11,6 +11,7 @@ import boto
 from boto import sqs
 
 AWS_PROFILE='mysite'
+EB_ENV_NAME='mysite'
 DOMAIN_NAME = 'mysite.com'
 R53_DOMAIN_NAME = 'www.%s.' % DOMAIN_NAME
 BASE_URL = 'https://www.' + DOMAIN_NAME
@@ -49,7 +50,7 @@ def runserver():
 def eb_deploy():
     local("eb deploy --timeout=10")
 
-def eb_create(name='mysite'):
+def eb_create(name=EB_ENV_NAME):
 
     local('eb init -p python --profile %s %s' % (AWS_PROFILE, name))
     local("eb create -db --timeout=20 --profile %s -c %s %s " % (AWS_PROFILE, name, name))
