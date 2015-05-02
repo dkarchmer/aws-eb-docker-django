@@ -38,8 +38,8 @@ ENV DJANGO_SETTINGS_MODULE=settings.production
 # Useless as there is no port really exposed but seems like EB needs it
 EXPOSE 8080
 
-VOLUME ["/var/app"]
+#VOLUME ["/var/app"]
 
 WORKDIR  /var/app
-CMD ["python3", "manage.py", "migrate", "--noinput"]
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8080"]
+CMD ["python3", "/var/app/manage.py", "migrate", "--noinput"]
+CMD ["python3", "/var/app/manage.py", "runserver", "0.0.0.0:8080"]
