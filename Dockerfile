@@ -41,5 +41,6 @@ EXPOSE 8080
 VOLUME ["/var/log/vps"]
 VOLUME ["/var/app"]
 
+WORKDIR  /var/app
 CMD ["python3", "manage.py", "migrate", "--noinput"]
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:8080"]
