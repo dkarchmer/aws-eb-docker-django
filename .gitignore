@@ -1,0 +1,33 @@
+.DS_Store
+ 
+*.py[cod]
+log
+
+*.zip
+
+# Local Database
+*.sqlite3
+ 
+# C extensions
+*.so
+
+*.pem
+
+# Other
+.elasticbeanstalk/
+.idea/
+./fabfile/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# Synmbolic links
+activitylog/
+ampervue/
+authentication/
+myproject/
+s3picture/
+settings/
+worker/

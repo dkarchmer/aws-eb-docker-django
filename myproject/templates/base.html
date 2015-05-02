@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load bootstrap3 %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,7 @@
 
     <title>MySite</title>
 
-    <link href="{% static 'freelancer/css/bootstrap.min.css' %}" rel="stylesheet">
+    {% bootstrap_css %}
 
     <!-- Custom CSS -->
     <link href="{% static 'freelancer/css/freelancer.css' %}" rel="stylesheet">
@@ -29,6 +30,9 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+  {% block media %} {% endblock %}
+
 
 </head>
 
@@ -69,23 +73,14 @@
     </div>
 
 
-    <!-- jQuery -->
-    <script src="{% static 'freelancer/js/jquery.js' %}"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{% static 'freelancer/js/bootstrap.min.js' %}"></script>
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="{% static 'freelancer/js/classie.js' %}"></script>
-    <script src="{% static 'freelancer/js/cbpAnimatedHeader.js' %}"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="{% static 'freelancer/js/jqBootstrapValidation.js' %}"></script>
-    <script src="{% static 'js/contact_me.js' %}"></script>
-
+  {% bootstrap_javascript %}
 
     <!-- Custom Theme JavaScript -->
     <script src="{% static 'freelancer/js/freelancer.js' %}"></script>
+
+    {% block js %} {% endblock %}
+
 
 </body>
 

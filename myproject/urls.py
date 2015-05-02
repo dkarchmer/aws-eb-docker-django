@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^account/', include('authentication.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
+    url(r'^api/v1/', include(v1_api_router.urls)),
     url(r'^api/v1/auth/', include('authentication.api_urls')),
 
     url('^robots.txt$', TemplateView.as_view(template_name="robots.txt")),
