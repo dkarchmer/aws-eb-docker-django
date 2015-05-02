@@ -1,0 +1,18 @@
+db:
+  image: postgres:9.3
+web:
+  build: .
+  volumes:
+    - .:/var/app
+  ports:
+    - "8080:8080"
+  links:
+    - db:db
+  environment:
+    - DJANGO_SETTINGS_MODULE=settings.production
+    - RDS_DB_NAME=postgres
+    - RDS_USERNAME=postgres
+    - RDS_PASSWORD=''
+    - RDS_HOSTNAME=db
+    - RDS_PORT=5432
+

@@ -30,8 +30,6 @@ COPY settings /var/app/settings
 COPY manage.py /var/app/
 
 ENV DJANGO_SETTINGS_MODULE=settings.production
-ENV USE_CELERY=0
-ENV EB_USE_WORKER=0
 #ENV RDS_DB_NAME=ebdb
 #ENV RDS_USERNAME=ebroot
 
@@ -43,6 +41,5 @@ EXPOSE 8080
 VOLUME ["/var/log/vps"]
 VOLUME ["/var/app"]
 
-RUN python manage.py migrate --noinput
-#CMD ["python", "manage.py", "migrate", "--noinput"]
-#CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+CMD ["python3", "manage.py", "migrate", "--noinput"]
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8080"]

@@ -11,9 +11,13 @@ import boto
 from boto import sqs
 
 AWS_PROFILE='mysite'
-R53_DOMAIN_NAME = 'www.mysite.com.'
-DOMAIN_NAME = 'https://www.mysite.com'
+DOMAIN_NAME = 'mysite.com'
+R53_DOMAIN_NAME = 'www.%s.' % DOMAIN_NAME
+BASE_URL = 'https://www.' + DOMAIN_NAME
 AWS_REGION = 'us-east-1'
+ADMIN_USERNAME = 'admin'
+ADMIN_EMAIL = 'admin@mysite.com'
+ADMIN_INITIAL_PASSWORD = 'admin' # To be changed after first login by admin
 
 
 authorization_token = None
@@ -60,7 +64,8 @@ def setup_route53():
     print (_yellow('lb.canonical_hosted_zone_name_id: ') + _green(str(lb.canonical_hosted_zone_name_id )))
     print (_yellow('lb.canonical_hosted_zone_name: ') + _green(str(lb.canonical_hosted_zone_name )))
 
-    zone = r53.get_zone(name='mysite.com.')
+    url_name = DOMAIN_NAME + '.'
+    zone = r53.get_zone(name=url_name)
 
     records = zone.get_records()
 
@@ -129,3 +134,38 @@ def get_db_info():
     for item in dbinfo:
         print(_green('%20s : %s' % (item, dbinfo[item])))
 
+def post_cmd(api, use_token, data=None, url_name=BASE_URL):
+
+    url = '%s/%s' % (url_name, api)
+    if use_token:
+        if not authorization_token:
+            raise('No Token')
+        authorization_str = 'token %s' % authorization_token
+        headers = {'content-type': 'application/json',
+                   'Authorization': authorization_str}
+    else:
+        headers = {'Content-Type': 'application/json'}
+
+    if data:
+        payload = json.dumps(data)
+        r = requests.post(url, data=payload, headers=headers)
+    else:
+        r = requests.post(url, headers=headers)
+
+    return r
+
+def create_admin(password=ADMIN_INITIAL_PASSWORD, url_name=BASE_URL):
+    username = ADMIN_USERNAME
+    email = ADMIN_EMAIL
+    data = {'username':username,
+            'email':email,
+            'password':password}
+    api = 'api/v1/staff/init/'
+
+    r = post_cmd(api=api, data=data, use_token=False, url_name=url_name)
+    if r.status_code == 201:
+        print(_green('Admin created'))
+    elif r.status_code == 200:
+        print(_yellow('Admin was not created: ') + _green('Not Needed'))
+    else:
+        print(_red('Something wrong: ') + _red(r.content))

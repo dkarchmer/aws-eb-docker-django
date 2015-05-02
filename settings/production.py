@@ -19,15 +19,15 @@ For Production, we assume
 The following comes from:
 http://rickchristianson.wordpress.com/2013/10/31/getting-a-django-app-to-use-https-on-aws-elastic-beanstalk/
 '''
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
 
 '''
 The following comes from:
 http://security.stackexchange.com/questions/8964/trying-to-make-a-django-based-site-use-https-only-not-sure-if-its-secure/8970#comment80472_8970
 '''
-os.environ['HTTPS'] = "on"
+#os.environ['HTTPS'] = "on"
 
 ALLOWED_HOSTS=['*' ]
 DATABASES = {
@@ -41,9 +41,6 @@ DATABASES = {
          'PORT': os.environ['RDS_PORT'],
          }
 }
-
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_KEY')
 
 # BOTO and django-storages
 STATIC_DIRECTORY = 'static/'

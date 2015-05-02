@@ -14,10 +14,9 @@ running a Django Project
 * pip install -r requirements.txt
 * pip install -r local_requirements.txt
 
-### Local Setup ###
+### Local Setup (Fabric) ###
 
 * As indicated, you must first install python 2.7/3.4, git, pip and virtualenv
-* Using Fabric, you can just do
 
 * fab statics
     * to collect statics
@@ -33,3 +32,12 @@ running a Django Project
 * fab eb_create
     * To deploy initial setup to AWS Elastic Beanstalk
 
+### Local Setup (Docker compose) ###
+
+Assuming you install docker-compose (https://docs.docker.com/compose/)
+
+* docker-compose up -d
+* docker-compose build web // To rebuild django server after changes
+* docker-compose run --rm web python3 manage.py migrate
+* docker-compose run --rm web python3 manage.py createsuperuser
+* docker-compose run --rm web python3 manage.py test --settings=settings.dev-local
