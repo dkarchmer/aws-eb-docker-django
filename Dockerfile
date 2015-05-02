@@ -1,5 +1,5 @@
 
-FROM python:3.4-onbuild
+FROM python:3.4
 MAINTAINER David Karchmer <dkarchmer@ampervue.com>
 
 # create unprivileged user
