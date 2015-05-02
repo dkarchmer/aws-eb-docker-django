@@ -10,8 +10,8 @@ from fabric.colors import red as _red, blue as _blue
 import boto
 from boto import sqs
 
-AWS_PROFILE='mysite'
-EB_ENV_NAME='mysite'
+AWS_PROFILE=os.environ['AWS_PROFILE']
+EB_ENV_NAME=os.environ['EB_ENV_NAME']
 DOMAIN_NAME = 'mysite.com'
 R53_DOMAIN_NAME = 'www.%s.' % DOMAIN_NAME
 BASE_URL = 'https://www.' + DOMAIN_NAME
@@ -38,11 +38,6 @@ def test(app=''):
     cmd = "./manage.py test %s --settings=settings.dev-local" % app
     local(cmd)
 
-def loaddata(app='myproject/fixtures/initial_data.json'):
-    # fab loaddata:myproject/fixtures/initial_data.json
-    cmd = "./manage.py loaddata %s --settings=settings.dev-local" % app
-    local(cmd)
-
 def runserver():
     migrate()
     local("./manage.py runserver --settings=settings.dev-local")
@@ -52,7 +47,7 @@ def eb_deploy():
 
 def eb_create(name=EB_ENV_NAME):
 
-    local('eb init -p python --profile %s %s' % (AWS_PROFILE, name))
+    local('eb init -p docker --profile %s %s' % (AWS_PROFILE, name))
     local("eb create -db --timeout=20 --profile %s -c %s %s " % (AWS_PROFILE, name, name))
 
 

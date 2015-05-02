@@ -41,3 +41,13 @@ Assuming you install docker-compose (https://docs.docker.com/compose/)
 * docker-compose run --rm web python3 manage.py migrate
 * docker-compose run --rm web python3 manage.py createsuperuser
 * docker-compose run --rm web python3 manage.py test --settings=settings.dev-local
+
+### AWS Elastic Beanstalk Release ###
+
+Assuming credentials stored on ~/.aws/credentials (http://boto.readthedocs.org/en/latest/boto_config_tut.html)
+
+* export AWS_PROFILE='your-profile-name'
+* export EB_ENV_NAME='elastic-beanstalk-environment-and-app-name' (we are using env==app names)
+* fab eb_create
+   * Enter db name and password
+   * It can take as much as ten minutes to finish
