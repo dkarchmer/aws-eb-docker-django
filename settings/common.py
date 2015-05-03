@@ -82,7 +82,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'myproject.urls'
 
-WSGI_APPLICATION = 'myproject.wsgi.application'
+#WSGI_APPLICATION = 'myproject.wsgi.application'
+WSGI_APPLICATION = 'application.application'
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 

@@ -47,7 +47,7 @@ def eb_deploy():
 def eb_create_custom(name=EB_ENV_NAME):
 
     local('eb init -p docker --profile %s %s' % (AWS_PROFILE, name))
-    local('eb create -db --timeout=20 --profile %s -c %s %s ' % (AWS_PROFILE, name, name))
+    local('eb create -db -s --timeout=20 --profile %s -c %s %s ' % (AWS_PROFILE, name, name))
 
 def eb_create_preconfigured(name=EB_ENV_NAME):
 
