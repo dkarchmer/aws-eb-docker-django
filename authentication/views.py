@@ -11,6 +11,8 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 from authentication.models import Account
 from authentication.forms import *
@@ -49,4 +51,23 @@ class AccountUpdateView(UpdateView):
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super(AccountUpdateView, self).dispatch(request, *args, **kwargs)
+
+class AccountInitView(View):
+    def get(self, request):
+        template = 'authentication/initialized.html'
+        if Account.objects.count() == 0:
+            print('Created Admin accoount')
+            admin = Account.objects.create_superuser(email=settings.ADMIN_EMAIL,
+                                                        username=settings.ADMIN_EMAIL,
+                                                        password=settings.ADMIN_INITIAL_PASSWORD)
+            admin.is_active = True
+            admin.is_admin = True
+            admin.save()
+            initialized = True
+        else:
+            print('Init ignored. Accounts already exit')
+            initialized = False
+
+        return render_to_response(template, locals(), context_instance = RequestContext(request))
+
 

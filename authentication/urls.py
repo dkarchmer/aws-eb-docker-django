@@ -9,6 +9,7 @@ from authentication.views import *
 urlpatterns = patterns('',
 
      url(r'^$', AccountRedirectView.as_view(), name='account_redirect'),
+     url(r'^init1/?$', AccountInitView.as_view(), name='account_init'),
 
      url(
         r'^login/$','django.contrib.auth.views.login',
@@ -24,7 +25,7 @@ urlpatterns = patterns('',
         ),
         name='logout',
      ),
-     url(r'^(?P<slug>\w+)/edit/$', AccountUpdateView.as_view(), name='account_edit'),
-     url(r'^(?P<slug>\w+)/$', AccountDetailView.as_view(), name='account_detail'),
+     url(r'^(?P<slug>\w+)/edit/?$', AccountUpdateView.as_view(), name='account_edit'),
+     url(r'^(?P<slug>\w+)/?$', AccountDetailView.as_view(), name='account_detail'),
 
 )

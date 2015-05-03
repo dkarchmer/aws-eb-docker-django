@@ -30,6 +30,10 @@ print('BASE_PROJECT_DIR = ' + BASE_PROJECT_DIR)
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
+ADMIN_USERNAME = 'admin'
+ADMIN_EMAIL = 'admin@mysite.com'
+ADMIN_INITIAL_PASSWORD = 'admin' # To be changed after first login by admin
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/

@@ -22,7 +22,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="{% url 'logout' %}">Logout</a>
+                        <a href="{% url 'login' %}">Login</a>
                     </li>
                 </ul>
             </div>
@@ -38,7 +38,11 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <span class="name">You are in</span>
+                        {% if initialized %}
+                             <span class="name">Initialized</span>
+                        {% else %}
+                             <span class="name">Accounts exist</span>
+                        {% endif %}
                         <hr class="star-light">
                     </div>
                 </div>
