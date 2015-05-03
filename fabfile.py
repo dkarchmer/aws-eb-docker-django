@@ -66,7 +66,7 @@ def get_db_info():
         print(_red('No instances found'))
         return
 
-    inst = instances['DescribeDBInstancesResponse']['DescribeDBInstancesResult']['DBInstances'][0]
+    inst = instances['DescribeDBInstancesResponse']['DescribeDBInstancesResult']['DBInstances'][1]
 
     #print(str(inst))
 
