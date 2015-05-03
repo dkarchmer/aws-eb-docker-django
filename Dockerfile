@@ -11,4 +11,4 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 ENV PYTHONPATH $PYTHONPATH:/var/app
-ENV DJANGO_SETTINGS_MODULE=settings.dev-local
+ENV DJANGO_SETTINGS_MODULE=settings.production

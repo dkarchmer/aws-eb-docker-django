@@ -9,7 +9,7 @@ import sys
 
 sys.path.insert(0, '/var/app')
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings.dev-local'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings.production'
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()

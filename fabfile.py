@@ -66,27 +66,29 @@ def get_db_info():
         print(_red('No instances found'))
         return
 
-    inst = instances['DescribeDBInstancesResponse']['DescribeDBInstancesResult']['DBInstances'][1]
+    count = len(instances['DescribeDBInstancesResponse']['DescribeDBInstancesResult']['DBInstances'])
+    for i in range(0, count):
+        inst = instances['DescribeDBInstancesResponse']['DescribeDBInstancesResult']['DBInstances'][i]
 
-    #print(str(inst))
+        #print(str(inst))
 
-    dbinfo = {}
-    endpoint = inst['Endpoint']
-    dbinfo['VPCSecurityGroupId'] = inst['VpcSecurityGroups'][0]['VpcSecurityGroupId']
-    dbinfo['dbSecurityGroupName'] = inst['DBSecurityGroups'][0]['DBSecurityGroupName']
-    dbinfo['host'] = endpoint['Address']
-    dbinfo['port'] = endpoint['Port']
-    dbinfo['user'] = inst['MasterUsername']
-    dbinfo['name'] = inst['DBName']
-    dbinfo['instanceClass'] = inst['DBInstanceClass']
-    dbinfo['dbID'] = inst['DBInstanceIdentifier']
-    dbinfo['Engine'] = inst['Engine']
-    dbinfo['EngineVersion'] = inst['EngineVersion']
+        dbinfo = {}
+        endpoint = inst['Endpoint']
+        dbinfo['VPCSecurityGroupId'] = inst['VpcSecurityGroups'][0]['VpcSecurityGroupId']
+        dbinfo['dbSecurityGroupName'] = inst['DBSecurityGroups'][0]['DBSecurityGroupName']
+        dbinfo['host'] = endpoint['Address']
+        dbinfo['port'] = endpoint['Port']
+        dbinfo['user'] = inst['MasterUsername']
+        dbinfo['name'] = inst['DBName']
+        dbinfo['instanceClass'] = inst['DBInstanceClass']
+        dbinfo['dbID'] = inst['DBInstanceIdentifier']
+        dbinfo['Engine'] = inst['Engine']
+        dbinfo['EngineVersion'] = inst['EngineVersion']
 
-    print('')
-    print(_blue('db Info ===========>\n'))
-    for item in dbinfo:
-        print(_green('%20s : %s' % (item, dbinfo[item])))
+        print('')
+        print(_blue('db Info %d ===========>\n' % i))
+        for item in dbinfo:
+            print(_green('%20s : %s' % (item, dbinfo[item])))
 
 def post_cmd(api, use_token, data=None, url_name=BASE_URL):
 
