@@ -14,6 +14,6 @@ sys.path.insert(0, '/var/app')
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings.production")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings.dev-local")
 
 application = get_wsgi_application()

@@ -29,7 +29,7 @@ COPY myproject /var/app/myproject
 COPY settings /var/app/settings
 COPY manage.py /var/app/
 
-ENV DJANGO_SETTINGS_MODULE=settings.production
+ENV DJANGO_SETTINGS_MODULE=settings.dev-local
 ENV RDS_DB_NAME=ebdb
 ENV RDS_USERNAME=ebroot
 ENV RDS_PASSWORD=eb.Pass.123
