@@ -30,16 +30,11 @@ COPY settings /var/app/settings
 COPY manage.py /var/app/
 
 ENV DJANGO_SETTINGS_MODULE=settings.production
-#ENV RDS_DB_NAME=ebdb
-#ENV RDS_USERNAME=ebroot
 
-#ENV RDS_PORT=5432
 
 # Useless as there is no port really exposed but seems like EB needs it
 EXPOSE 8080
 
 #VOLUME ["/var/app"]
 
-WORKDIR  /var/app
-CMD ["python3", "/var/app/manage.py", "migrate", "--noinput"]
-CMD ["python3", "/var/app/manage.py", "runserver", "0.0.0.0:8080"]
+CMD ["python", "/var/app/manage.py", "runserver", "0.0.0.0:8080"]
