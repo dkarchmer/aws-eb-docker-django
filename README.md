@@ -29,7 +29,7 @@ running a Django Project
 * fab runserver
     * To run local server
 
-* fab eb_create
+* fab eb_create_preconfigured
     * To deploy initial setup to AWS Elastic Beanstalk
 
 ### Local Setup (Docker compose) ###
@@ -38,9 +38,9 @@ Assuming you install docker-compose (https://docs.docker.com/compose/)
 
 * docker-compose up -d
 * docker-compose build web // To rebuild django server after changes
-* docker-compose run --rm web python3 manage.py migrate
-* docker-compose run --rm web python3 manage.py createsuperuser
-* docker-compose run --rm web python3 manage.py test --settings=settings.dev-local
+* docker-compose run --rm web python manage.py migrate
+* docker-compose run --rm web python manage.py createsuperuser
+* docker-compose run --rm web python manage.py test --settings=settings.dev-local
 
 ### AWS Elastic Beanstalk Release ###
 
