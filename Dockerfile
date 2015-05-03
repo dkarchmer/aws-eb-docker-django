@@ -30,6 +30,11 @@ COPY settings /var/app/settings
 COPY manage.py /var/app/
 
 ENV DJANGO_SETTINGS_MODULE=settings.production
+ENV RDS_DB_NAME=ebdb
+ENV RDS_USERNAME=ebroot
+ENV RDS_PASSWORD=eb.Pass.123
+ENV RDS_HOSTNAME=aa2locrhlwceh5.cyugexp1diwq.us-east-1.rds.amazonaws.com
+ENV RDS_PORT=5232
 
 
 # Useless as there is no port really exposed but seems like EB needs it
