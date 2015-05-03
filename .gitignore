@@ -4,6 +4,7 @@
 log
 
 *.zip
+*.log.txt
 
 # Local Database
 *.sqlite3
