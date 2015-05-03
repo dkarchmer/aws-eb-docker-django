@@ -43,4 +43,5 @@ EXPOSE 8080
 #VOLUME ["/var/app"]
 
 WORKDIR  /var/app
+CMD ["python", "/var/app/manage.py", "migrate", "--noimput"]
 CMD ["python", "/var/app/manage.py", "runserver", "0.0.0.0:8080"]
