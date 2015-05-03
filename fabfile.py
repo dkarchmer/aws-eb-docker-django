@@ -52,7 +52,7 @@ def eb_create_custom(name=EB_ENV_NAME):
 def eb_create_preconfigured(name=EB_ENV_NAME):
 
     local('eb init -p "64bit Debian jessie v1.3.1 running Python 3.4 (Preconfigured - Docker)" --profile %s %s' % (AWS_PROFILE, name))
-    local('eb create -db --timeout=20 --profile %s -c %s %s ' % (AWS_PROFILE, name, name))
+    local('eb create -db -s --timeout=20 --profile %s -c %s %s ' % (AWS_PROFILE, name, name))
 
 def get_db_info():
 
