@@ -6,7 +6,10 @@ cd /var/app
 
 env | grep WSGI
 env | grep RDS
+env | grep PYTHON
 pwd
+ls -la
+
 python3 manage.py migrate
 
 # Django support
