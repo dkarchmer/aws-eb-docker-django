@@ -9,7 +9,7 @@ from authentication.views import *
 urlpatterns = patterns('',
 
      url(r'^$', AccountRedirectView.as_view(), name='account_redirect'),
-     url(r'^init1/?$', AccountInitView.as_view(), name='account_init'),
+     url(r'^init/?$', AccountInitView.as_view(), name='account_init'),
 
      url(
         r'^login/$','django.contrib.auth.views.login',

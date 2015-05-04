@@ -32,23 +32,17 @@
 {% endblock %}
 
 {% block content %}
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-text">
-                        {% if initialized %}
-                             <span class="name">Initialized</span>
-                        {% else %}
-                             <span class="name">Accounts exist</span>
-                        {% endif %}
-                        <hr class="star-light">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+
+<div class="jumbotron" align="center">
+    <h2>Account Initialization</h2>
+    {% if initialized %}
+    <h3>Initialized</h3>
+    {% else %}
+    <h3>Accounts exist already</h3>
+    {% endif %}
+</div>
+
+
 
 
 {% endblock %}

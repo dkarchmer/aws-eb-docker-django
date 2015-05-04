@@ -1,202 +1,45 @@
+{% extends "base.html" %}
 {% load staticfiles %}
 
+{% block navigation %}
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>MySite</title>
-		<!-- Description, Keywords and Author -->
-		<meta name="description" content="Your description">
-		<meta name="keywords" content="Your,Keywords">
-		<meta name="author" content="ResponsiveWebInc">
-
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-		<!-- Styles -->
-		<!-- Bootstrap CSS -->
-		<link href="{% static 'brave/css/bootstrap.min.css' %}" rel="stylesheet">
-		<!-- Font awesome CSS -->
-		<link href="{% static 'brave/css/font-awesome.min.css' %}" rel="stylesheet">
-		<!-- Magnific Popup -->
-		<link href="{% static 'brave/css/magnific-popup.css' %}" rel="stylesheet">
-
-		<!-- CSS for this page -->
-
-		<!-- Base style -->
-		<link href="{% static 'brave/css/styles/style.css' %}" rel="stylesheet">
-		<!-- Skin CSS -->
-		<link href="{% static 'brave/css/styles/skin-lblue.css' %}" rel="stylesheet" id="color_theme">
-
-		<!-- Custom CSS. Type your CSS code in custom.css file -->
-		<link href="{% static 'brave/css/custom.css' %}" rel="stylesheet">
-
-		<!-- Favicon -->
-        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
-	</head>
-
-	<!-- Add class "boxed" along with body for boxed layout. -->
-	<!-- Add "pattern-x" (1 to 5) for background patterns. -->
-	<!-- Add "img-x" (1 to 5) for background images. -->
-	<body>
-
-		<!-- Outer Starts -->
-		<div class="outer">
-
-			<!-- Top bar ends -->
-
-			<!-- Header two Starts -->
-			<div class="header-2">
-
-				<!-- Container -->
-				<div class="container">
-					<div class="row">
-						<div class="col-md-2">
-							<!-- Logo section -->
-							<div class="logo">
-								<h1><a href="/"> Amper<span style="color: #3280e7;">Vue</span></a></h1>
-							</div>
-						</div>
-						<div class="col-md-9">
-
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-			<!-- Top bar ends -->
-
-			<!-- Main content starts -->
-
-			<div class="main-block">
-
-				<!-- Revolution slider full width ends -->
-				<div class="container">
-
-
-				<!-- Page heading one starts -->
-
-                    <section id="contact">
-
-                        <div class="page-heading-one">
-                            <h2>About this site</h2>
-                            <h3></h3>
-                        </div>
-
-
-
-
-                    <div class="contact-us-one">
-
-                        <div class="block-heading-two">
-                            <h3><span>Aknowledgements</span></h3>
-                        </div>
-
-
-
-                        <!-- Contact Section -->
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-8 col-sm-6">
-                                        This site was build using the following Open Source Technology.
-
-                                        <ul>
-                                            <li>
-                                                Languages: Python, HTML5, CSS, JavaScript
-                                            </li>
-                                            <li>
-                                                Frameworks: Django, Django-Rest-Framework, Bootstrap
-                                            </li>
-                                            <li>
-                                                Databases: Postgress
-                                            </li>
-                                            <li>
-                                                All the Linux, Python, and Javascript based packages and utilities
-                                            </li>
-                                        </ul>
-
-                                        <br>
-                                        <br>
-                                        <br>
-                                    </div>
-
-                                    <div class="col-md-2 col-sm-6">
-                                        <div class="contact-item">
-                                            <!-- Social -->
-                                            <div class="brand-bg">
-                                                <!-- Heading -->
-                                                <h5>References</h5>
-                                                <!-- Order List -->
-                                                <ul class="list-unstyled">
-                                                    <li>
-                                                        <span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=cS7neBiXPM1zK7ktAtSPrdBLJBSVRy51MuDCWEJZSbj9ijd9FwleHfaY1jIV"></script></span>
-                                                    </li>
-                                                    <li>
-                                                        <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangomade124x25.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                    </div>
-
-                    </section>
-
-
-                </div>
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">MySite</a>
             </div>
 
-			<!-- Main content ends -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="{% url 'login' %}">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+{% endblock %}
 
-			<!-- Footer Starts -->
-
-			<footer>
-				<!-- Container -->
-				<div class="container">
-					<!-- Footer Content -->
-						<!-- Paragraph -->
-						<p class="pull-left">Copyright &copy; 2015 - <a href="#">MySite</a></p>
-						<ul class="list-inline pull-right">
-							<!-- List -->
-							<li><a href="/">Home</a><li>
-							<li><a href="/#contact">Contact</a></li>
-						</ul>
-						<!-- Clearfix -->
-						<div class="clearfix"></div>
-				</div>
-			</footer>
-
-			<!-- Footer Ends -->
-
-		</div>
-
-		<!-- Outer Ends -->
-
-		<!-- Scroll to top -->
-		<span class="totop"><a href="#"><i class="fa fa-angle-up bg-color"></i></a></span>
-
-		<!-- Javascript files -->
-		<!-- jQuery -->
-		<script src="{% static 'brave/js/jquery.js' %}"></script>
-		<!-- Bootstrap JS -->
-		<script src="{% static 'brave/js/bootstrap.min.js' %}' %}"></script>
-		<!-- Placeholders JS -->
-		<script src="{% static 'brave/js/placeholders.js' %}"></script>
-		<!-- HTML5 Support for IE -->
-		<script src="{% static 'brave/js/html5shiv.js' %}"></script>
-		<!-- Main JS -->
-		<script src="{% static 'brave/js/main.js' %}"></script>
+{% block content %}
+    <!-- Header -->
 
 
-		<!-- Javascript for this page -->
+<div class="jumbotron" align="center">
+    <h1>About this site</h1>
+</div>
 
-		<!-- Custom JS. Type your JS code in custom.js file -->
-		<script src="{% static 'brave/js/custom.js' %}"></script>
 
-	</body>
-</html>
+
+
+{% endblock %}

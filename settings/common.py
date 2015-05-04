@@ -135,7 +135,6 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     ('images', os.path.join(static_path, 'images')),
-    ('freelancer', os.path.join(static_path, 'freelancer-1.0.1')),
     ('js', os.path.join(static_path, 'js')),
     ('css', os.path.join(static_path, 'css')),
 )

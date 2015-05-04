@@ -1,7 +1,9 @@
 # README #
 
-This README document an example for how to setup a Docker based Elastic Beanstalk
-running a Django Project
+This README document an example for how to setup a Docker based Elastic Beanstalk (EB)
+running a Django Project.
+
+This version uses the Preconfigured Python Docker Platform in EB
 
 ## How do I get set up? ##
 
@@ -48,9 +50,9 @@ Assuming credentials stored on ~/.aws/credentials (http://boto.readthedocs.org/e
 
 * export AWS_PROFILE='your-profile-name'
 * export EB_ENV_NAME='elastic-beanstalk-environment-and-app-name' (we are using env==app names)
-* fab eb_create
+* fab eb_create_preconfigured
    * Enter db name and password
    * It can take as much as ten minutes to finish
-* fab create_admin
-   * which will create a super user account for the admin if NO accounts exist
-   * This can only be called once and the password should be changed within the site right away
+* After the site is up, go to the following address to initialize the admin account
+   * http://<your env>.elasticbeanstalk.com/account/init
+   * Then login and change the password
