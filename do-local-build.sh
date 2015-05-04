@@ -1,5 +1,6 @@
 #!/bin/bash
 
+docker kill $(docker ps -a -q)
 docker build -t eb .
 docker pull postgres:9.3
 docker run -d -p 5432:5432 postgres:9.3

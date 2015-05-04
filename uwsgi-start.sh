@@ -2,7 +2,12 @@
 
 cd /var/app
 
-. bin/activate
+#. bin/activate
+
+env | grep WSGI
+env | grep RDS
+pwd
+python3 manage.py migrate
 
 # Django support
 #WSGI_PATH=/var/app/myproject/wsgi.py
