@@ -32,7 +32,7 @@ ENV UWSGI_GID              uwsgi
 ENV UWSGI_LOG_FILE         /var/log/uwsgi/uwsgi.log
 
 ENV PYTHONPATH /var/app:$PYTHONPATH
-ENV DJANGO_SETTINGS_MODULE=settings.dev-local
+#ENV DJANGO_SETTINGS_MODULE=settings.dev-local
 
 EXPOSE 8080
 
