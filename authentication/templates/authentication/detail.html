@@ -2,14 +2,11 @@
 
 {% block content %}
 
-        <div class="container">
-            <div class="breads">
-                <a href="/">Home</a> / {{ object.username }}
-        </div>
-
+<div class="jumbotron" align="center">
+    <h2>@{{ object.username }}</h2>
 
         <!-- Name -->
-        <h4>{{ object.get_full_name }}</h4><spam>@{{ object.username }}</spam>
+        <h3>{{ object.get_full_name }}</h3>
         {{ object.created_at|date:"D d M Y" }}
         <p><small>
             Email: {{ object.email }}
@@ -18,7 +15,7 @@
         {% if object.tagline %}
         <p>{{ object.tagline }}</p>
         {% endif %}
-
+</div>
 
 
 {% endblock %}

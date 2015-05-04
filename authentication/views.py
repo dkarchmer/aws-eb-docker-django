@@ -58,7 +58,7 @@ class AccountInitView(View):
         if Account.objects.count() == 0:
             print('Created Admin accoount')
             admin = Account.objects.create_superuser(email=settings.ADMIN_EMAIL,
-                                                        username=settings.ADMIN_EMAIL,
+                                                        username=settings.ADMIN_USERNAME,
                                                         password=settings.ADMIN_INITIAL_PASSWORD)
             admin.is_active = True
             admin.is_admin = True

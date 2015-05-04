@@ -1,13 +1,13 @@
 # README #
 
 This README document an example for how to setup a Docker based Elastic Beanstalk (EB)
-running a Django Project.
+running a Django Project with a Postgres RDS instance
 
-This version uses the Preconfigured Python Docker Platform in EB
+This version uses the Generic Docker Platform in EB
 
 ## How do I get set up? ##
 
-* install Python 2.7 or Python 3.4
+* install Python 3.4
 * install git
 * install pip
 * install virtualenv
@@ -31,7 +31,7 @@ This version uses the Preconfigured Python Docker Platform in EB
 * fab runserver
     * To run local server
 
-* fab eb_create_preconfigured
+* fab eb_create
     * To deploy initial setup to AWS Elastic Beanstalk
 
 ### Local Setup (Docker compose) ###

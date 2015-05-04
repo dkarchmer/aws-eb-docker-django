@@ -44,14 +44,9 @@ def runserver():
 def eb_deploy():
     local("eb deploy --timeout=10")
 
-def eb_create_custom(name=EB_ENV_NAME):
+def eb_create(name=EB_ENV_NAME):
 
     local('eb init -p docker --profile %s %s' % (AWS_PROFILE, name))
-    local('eb create -db -s --timeout=20 --profile %s -c %s %s ' % (AWS_PROFILE, name, name))
-
-def eb_create_preconfigured(name=EB_ENV_NAME):
-
-    local('eb init -p "64bit Debian jessie v1.3.1 running Python 3.4 (Preconfigured - Docker)" --profile %s %s' % (AWS_PROFILE, name))
     local('eb create -db -s --timeout=20 --profile %s -c %s %s ' % (AWS_PROFILE, name, name))
 
 def get_db_info():
@@ -90,38 +85,3 @@ def get_db_info():
         for item in dbinfo:
             print(_green('%20s : %s' % (item, dbinfo[item])))
 
-def post_cmd(api, use_token, data=None, url_name=BASE_URL):
-
-    url = '%s/%s' % (url_name, api)
-    if use_token:
-        if not authorization_token:
-            raise('No Token')
-        authorization_str = 'token %s' % authorization_token
-        headers = {'content-type': 'application/json',
-                   'Authorization': authorization_str}
-    else:
-        headers = {'Content-Type': 'application/json'}
-
-    if data:
-        payload = json.dumps(data)
-        r = requests.post(url, data=payload, headers=headers)
-    else:
-        r = requests.post(url, headers=headers)
-
-    return r
-
-def create_admin(password=ADMIN_INITIAL_PASSWORD, url_name=BASE_URL):
-    username = ADMIN_USERNAME
-    email = ADMIN_EMAIL
-    data = {'username':username,
-            'email':email,
-            'password':password}
-    api = 'api/v1/staff/init/'
-
-    r = post_cmd(api=api, data=data, use_token=False, url_name=url_name)
-    if r.status_code == 201:
-        print(_green('Admin created'))
-    elif r.status_code == 200:
-        print(_yellow('Admin was not created: ') + _green('Not Needed'))
-    else:
-        print(_red('Something wrong: ') + _red(r.content))
