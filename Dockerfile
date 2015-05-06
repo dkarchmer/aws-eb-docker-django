@@ -25,5 +25,5 @@ EXPOSE 8080
 COPY runserver.sh /var/app/runserver.sh
 
 CMD        []
-ENTRYPOINT ["./runserver.sh"]
+ENTRYPOINT ["/var/app/runserver.sh"]
 
