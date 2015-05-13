@@ -2,7 +2,7 @@ __author__ = 'dkarchmer@gmail.com'
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
-from apps.authentication.models import Account
+from authentication.models import Account
 
 class Command(BaseCommand):
 
