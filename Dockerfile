@@ -1,31 +1,33 @@
 FROM python:3.4
+
 MAINTAINER David Karchmer <dkarchmer@gmail.com>
 
+ENV C_FORCE_ROOT 1
+
+# create unprivileged user
+RUN adduser --disabled-password --gecos '' myuser
+
 # Install PostgreSQL dependencies
-RUN apt-get update && apt-get install -y \
-            postgresql \
-            libpq-dev \
-            libjpeg-dev; \
-            apt-get clean
+RUN apt-get update && \
+    apt-get install -y postgresql-client libpq-dev && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install -U pip
 
-RUN adduser --disabled-password --gecos '' uwsgi
+# Step 1: Install any Python packages
+# ----------------------------------------
 
-WORKDIR    /var/app
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /var/app
+WORKDIR  /var/app
+COPY requirements.txt /var/app/requirements.txt
+RUN pip install -r requirements.txt
 
-ADD . /var/app/
-RUN pip3 install -r requirements.txt
+# Step 2: Copy Django Code
+# ----------------------------------------
 
-ENV PYTHONPATH /var/app:$PYTHONPATH
-#ENV DJANGO_SETTINGS_MODULE=settings.dev-local
+COPY . /var/app/.
 
 EXPOSE 8080
 
-#COPY runserver.sh /var/app/runserver.sh
-
-WORKDIR    /var/app
-CMD ["python3", "manage.py", "migrate", "--noinput"]
-CMD ["python3", "manage.py", "runserver"]
-#ENTRYPOINT ["/var/app/runserver.sh"]
+CMD ["/var/app/runserver.sh"]
 

@@ -34,6 +34,9 @@ This version uses the Generic Docker Platform in EB
 * fab eb_create
     * To deploy initial setup to AWS Elastic Beanstalk
 
+* fab eb_deploy
+    * To deploy code changes to an existing image (previously created)
+
 ### Local Setup (Docker compose) ###
 
 Assuming you install docker-compose (https://docs.docker.com/compose/)
