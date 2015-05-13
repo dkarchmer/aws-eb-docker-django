@@ -56,3 +56,7 @@ Assuming credentials stored on ~/.aws/credentials (http://boto.readthedocs.org/e
 * After the site is up, go to the following address to initialize the admin account
    * http://<your env>.elasticbeanstalk.com/account/init
    * Then login and change the password
+
+### References ###
+
+* https://realpython.com/blog/python/deploying-a-django-app-to-aws-elastic-beanstalk/
