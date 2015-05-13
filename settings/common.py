@@ -29,7 +29,12 @@ print('BASE_PROJECT_DIR = ' + BASE_PROJECT_DIR)
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
+    ('admin', 'admin@mysite.com')
 )
+ADMIN_USERNAME = 'admin'
+ADMIN_EMAIL = 'admin@mysite.com'
+ADMIN_INITIAL_PASSWORD = 'admin' # To be changed after first login by admin
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -131,7 +136,6 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     ('images', os.path.join(static_path, 'images')),
-    ('freelancer', os.path.join(static_path, 'freelancer-1.0.1')),
     ('js', os.path.join(static_path, 'js')),
     ('css', os.path.join(static_path, 'css')),
 )

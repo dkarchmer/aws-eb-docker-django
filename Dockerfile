@@ -1,14 +1,31 @@
-# Use the AWS Elastic Beanstalk Python 3.4 image
-FROM amazon/aws-eb-python:3.4.2-onbuild-3.5.1
-MAINTAINER David Karchmer <dkarchmer@gamail.com>
-
-# Exposes port 8080
-EXPOSE 8080
+FROM python:3.4
+MAINTAINER David Karchmer <dkarchmer@gmail.com>
 
 # Install PostgreSQL dependencies
-RUN apt-get update && \
-    apt-get install -y postgresql libpq-dev && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+            postgresql \
+            libpq-dev \
+            libjpeg-dev; \
+            apt-get clean
 
-ENV PYTHONPATH $PYTHONPATH:/var/app
-ENV DJANGO_SETTINGS_MODULE=settings.production
+RUN pip3 install -U pip
+
+RUN adduser --disabled-password --gecos '' uwsgi
+
+WORKDIR    /var/app
+
+ADD . /var/app/
+RUN pip3 install -r requirements.txt
+
+ENV PYTHONPATH /var/app:$PYTHONPATH
+#ENV DJANGO_SETTINGS_MODULE=settings.dev-local
+
+EXPOSE 8080
+
+#COPY runserver.sh /var/app/runserver.sh
+
+WORKDIR    /var/app
+CMD ["python3", "manage.py", "migrate", "--noinput"]
+CMD ["python3", "manage.py", "runserver"]
+#ENTRYPOINT ["/var/app/runserver.sh"]
+

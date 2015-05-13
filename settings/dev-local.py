@@ -11,8 +11,6 @@ ALLOWED_HOSTS=['*']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-TEMPLATE_DEBUG = True
-
 print('Using native server (sqlite3)')
 
 DATABASES = {

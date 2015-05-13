@@ -12,7 +12,12 @@
 {% block content %}
 
 <div class="jumbotron" align="center">
-    <h1>About this site</h1>
+    <h2>Account Initialization</h2>
+    {% if initialized %}
+    <h3>Initialized</h3>
+    {% else %}
+    <h3>Accounts exist already</h3>
+    {% endif %}
 </div>
 
 {% endblock %}
