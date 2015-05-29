@@ -23,23 +23,23 @@ ADMIN_INITIAL_PASSWORD = 'admin' # To be changed after first login by admin
 authorization_token = None
 
 def create_local_admin():
-    local("./manage.py createsuperuser --username=admin --email=admin@test.com  --settings=settings.dev-local")
+    local("python manage.py createsuperuser --username=admin --email=admin@test.com  --settings=settings.dev-local")
 
 def statics():
-    local("./manage.py collectstatic --noinput --settings=settings.dev-local")
+    local("python manage.py collectstatic --noinput --settings=settings.dev-local")
 
 def migrate():
-    local("./manage.py makemigrations --settings=settings.dev-local")
-    local("./manage.py migrate --noinput --settings=settings.dev-local")
+    local("python manage.py makemigrations --settings=settings.dev-local")
+    local("python manage.py migrate --noinput --settings=settings.dev-local")
 
 def test(app=''):
     local('export AWS_PROFILE=%s' % AWS_PROFILE)
-    cmd = "./manage.py test %s --settings=settings.dev-local" % app
+    cmd = "python manage.py test %s --settings=settings.dev-local" % app
     local(cmd)
 
 def runserver():
     migrate()
-    local("./manage.py runserver --settings=settings.dev-local")
+    local("python manage.py runserver --settings=settings.dev-local")
 
 def eb_deploy():
     local("eb deploy --timeout=10")
