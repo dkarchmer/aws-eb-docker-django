@@ -15,9 +15,8 @@ log
 *.pem
 
 # Other
-.elasticbeanstalk/
-.idea/
-./fabfile/
+.idea/*
+.fabfile/*
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
