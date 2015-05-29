@@ -44,7 +44,7 @@ Assuming you install docker-compose (https://docs.docker.com/compose/)
 * docker-compose up -d
 * docker-compose build web // To rebuild django server after changes
 * docker-compose run --rm web python manage.py migrate
-* docker-compose run --rm web python manage.py createsuperuser
+* docker-compose run --rm web python manage.py initadmin
 * docker-compose run --rm web python manage.py test --settings=settings.dev-local
 
 ### AWS Elastic Beanstalk Release ###
